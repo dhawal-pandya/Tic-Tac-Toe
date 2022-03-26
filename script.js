@@ -92,8 +92,15 @@ var counter = 1;
 for (let i = 0; i < 3; i++) {
   for (let j = 0; j < 3; j++) {
     array[i][j].addEventListener('click', function () {
-      if (counter % 2 == 0) symbol = 'O';
-      else symbol = 'X';
+       if (counter % 2 == 0) {
+        symbol = 'X';
+        scoreX.style.fontWeight = 'normal';
+        scoreO.style.fontWeight = '900';
+      } else {
+        symbol = 'O';
+        scoreO.style.fontWeight = 'normal';
+        scoreX.style.fontWeight = '900';
+      }
       //
       if (array[i][j].textContent == 'X') array[i][j].textContent = 'X';
       else if (array[i][j].textContent == 'O') array[i][j].textContent = 'O';

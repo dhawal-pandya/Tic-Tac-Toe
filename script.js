@@ -31,6 +31,7 @@ function restate() {
   }
   result.textContent = `...`;
 }
+
 // the same thing to happen when one wins.
 function whenWins() {
   result.textContent = `${symbol} won`;
@@ -39,6 +40,16 @@ function whenWins() {
   setTimeout(() => {
     restate();
   }, 1000);
+}
+
+//checks if draw
+function checkDraw() {
+  if (counter == 9) {
+    result.textContent = 'Draw';
+    setTimeout(() => {
+      restate();
+    }, 1000);
+  }
 }
 
 // checks the Winner;
@@ -90,6 +101,7 @@ for (let i = 0; i < 3; i++) {
         array[i][j].textContent = `${symbol}`;
         counter++;
       }
+      checkDraw
       checkWin(symbol);
     });
   }

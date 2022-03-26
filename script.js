@@ -96,11 +96,11 @@ for (let i = 0; i < 3; i++) {
        if (counter % 2 == 0) {
         symbol = 'X';
         scoreX.style.fontWeight = 'normal';
-        scoreO.style.fontWeight = '900';
+        scoreO.style.fontWeight = '700';
       } else {
         symbol = 'O';
         scoreO.style.fontWeight = 'normal';
-        scoreX.style.fontWeight = '900';
+        scoreX.style.fontWeight = '700';
       }
       //
       if (array[i][j].textContent == 'X') array[i][j].textContent = 'X';

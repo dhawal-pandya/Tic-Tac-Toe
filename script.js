@@ -30,6 +30,7 @@ function restate() {
     }
   }
   result.textContent = `...`;
+  counter = 0;
 }
 
 // the same thing to happen when one wins.

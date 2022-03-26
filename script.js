@@ -30,9 +30,7 @@ function restate() {
     }
   }
   result.textContent = `...`;
-  counter = 0;
 }
-
 // the same thing to happen when one wins.
 function whenWins() {
   result.textContent = `${symbol} won`;
@@ -42,17 +40,21 @@ function whenWins() {
     restate();
   }, 1000);
 }
-
 //checks if draw
-function checkDraw() {
-  if (counter == 9) {
+function checkDraw(drawCount) {
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      if (array[i][j].textContent == 'X' || array[i][j].textContent == 'O')
+        drawCount++;
+    }
+  }
+  if (drawCount == 9 && result.textContent == '...') {
     result.textContent = 'Draw';
     setTimeout(() => {
       restate();
     }, 1000);
   }
 }
-
 // checks the Winner;
 function checkWin(symbol) {
   for (let i = 0; i < 3; i++) {
@@ -89,11 +91,12 @@ function checkWin(symbol) {
 
 //the event
 let symbol = '';
-var counter = 1;
+var counter = 0;
+let drawCount = 0;
 for (let i = 0; i < 3; i++) {
   for (let j = 0; j < 3; j++) {
     array[i][j].addEventListener('click', function () {
-       if (counter % 2 == 0) {
+      if (counter % 2 == 0) {
         symbol = 'X';
         scoreX.style.fontWeight = 'normal';
         scoreO.style.fontWeight = '700';
@@ -106,11 +109,11 @@ for (let i = 0; i < 3; i++) {
       if (array[i][j].textContent == 'X') array[i][j].textContent = 'X';
       else if (array[i][j].textContent == 'O') array[i][j].textContent = 'O';
       else {
-        array[i][j].textContent = `${symbol}`;
         counter++;
+        array[i][j].textContent = `${symbol}`;
       }
-      checkDraw
       checkWin(symbol);
+      checkDraw(drawCount);
     });
   }
 }
